@@ -20,11 +20,31 @@ function onReady(){
   appendSquaresToDom(numberOfSquares);
 }
 
-function highlightASquare(){
-  //This variable stores an array of the elements with the 'square' class
-  var arrayOfSquares = $('.square');
+var counter = 0;
 
-}
+function highlightASquare(){
+    //This variable stores an array of the elements with the 'square' class
+    var arrayOfSquares = $('.square');
+    //hightlight arrayOfSquares[i], add .hightlight style
+    //target single square, each array element
+    var singleSquare = ($('.square')[counter]);
+    var prevSquare = ($('.square')[counter-1]);
+    //loop through array index, different case for when 0, 10 and 1-9
+    if (counter > 0 && counter <10) {
+      $(singleSquare).addClass("highlight");
+      $(prevSquare).removeClass("highlight");
+      counter ++;
+  } else if (counter == 10 ) {
+      $(singleSquare).addClass("highlight");
+      $(prevSquare).removeClass("highlight");
+      counter = 0;
+  }  else {
+      $(singleSquare).addClass("highlight");
+      $($('.square')[9]).removeClass("highlight");
+      counter ++;
+  } //end if if/else
+} //end of highlightASquare function
+
 
 
 //You don't need to change this function:
@@ -35,5 +55,6 @@ function appendSquaresToDom(number){
     squaresToAppend += "<div class='square'></div>";
   }
   //append string of html
-  $(".container").append(squaresToAppend);
+   $(".container").append(squaresToAppend);
+
 }
