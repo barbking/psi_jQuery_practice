@@ -24,23 +24,26 @@ var counter = 0;
 
 function highlightASquare(){
     //This variable stores an array of the elements with the 'square' class
+
     var arrayOfSquares = $('.square');
+    var arrayLength = arrayOfSquares.length;
+    console.log(arrayOfSquares.length);
     //hightlight arrayOfSquares[i], add .hightlight style
     //target single square, each array element
     var singleSquare = ($('.square')[counter]);
     var prevSquare = ($('.square')[counter-1]);
     //loop through array index, different case for when 0, 10 and 1-9
-    if (counter > 0 && counter <10) {
+    if (counter > 0 && counter <arrayOfSquares.length) {
       $(singleSquare).addClass("highlight");
       $(prevSquare).removeClass("highlight");
       counter ++;
-  } else if (counter == 10 ) {
+  } else if (counter == arrayOfSquares.length ) {
       $(singleSquare).addClass("highlight");
       $(prevSquare).removeClass("highlight");
       counter = 0;
   }  else {
       $(singleSquare).addClass("highlight");
-      $($('.square')[9]).removeClass("highlight");
+      $($('.square')[arrayOfSquares.length-1]).removeClass("highlight");
       counter ++;
   } //end if if/else
 } //end of highlightASquare function
